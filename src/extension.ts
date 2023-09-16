@@ -1,22 +1,40 @@
 import * as vscode from 'vscode';
 
+function getWebviewContent(): string {
+  return `
+    <html>
+      <head>
+      </head>
+    <body>
+      <h1>欢迎来到我的自定义Webview视图！</h1>
+    </body>
+    </html>
+  `;
+}
+
 export function activate(context: vscode.ExtensionContext) {
+  console.log('vscode-extension-bootstrap is active.');
 
-  // Use the console to output diagnostic information (console.log) and errors (console.error)
-  // This line of code will only be executed once when your extension is activated
-  console.log('Congratulations, your extension "vscode-extension-bootstrap" is now active!');
+  const webViewPanel = vscode.window.createWebviewPanel(
+    'myCustomView', // 同`package.json`中定义的ID
+    '我的自定义Webview视图', // 面板标题
+    vscode.ViewColumn.One, // 显示在编辑器的哪一列
+    {
+      // Webview选项
+      enableScripts: true // 允许在Webview中运行脚本
+    }
+  );
 
-  // The command has been defined in the package.json file
-  // Now provide the implementation of the command with registerCommand
-  // The commandId parameter must match the command field in package.json
+  webViewPanel.webview.html = getWebviewContent(); // 设置Webview的内容
+  context.subscriptions.push(webViewPanel);
+
   let disposable = vscode.commands.registerCommand('vscode-extension-bootstrap.helloWorld', () => {
-    // The code you place here will be executed every time your command is executed
-    // Display a message box to the user
-    vscode.window.showInformationMessage('Hello World from vscode-extension-bootstrap!');
+    console.log('hello');
   });
 
   context.subscriptions.push(disposable);
 }
 
-// This method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() {
+  console.log('vscode-extension-bootstrap is deactivate.');
+}

@@ -2,7 +2,6 @@
 
 const path = require('path');
 
-/** @type WebpackConfig */
 const extensionConfig = {
   target: 'node',
   mode: 'none',
