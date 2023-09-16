@@ -11,6 +11,7 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
+    indent: ['error', 2],
     '@typescript-eslint/naming-convention': 'warn',
     '@typescript-eslint/semi': 'warn',
     curly: 'warn',
