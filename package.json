@@ -10,15 +10,35 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
   "main": "./dist/extension.js",
+  "activationEvents": [
+    "onView:bootstrapSidebar"
+  ],
   "contributes": {
     "commands": [
       {
         "command": "vscode-extension-bootstrap.helloWorld",
         "title": "Hello World"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "bootstrapSidebar",
+          "title": "bootstrap",
+          "icon": "assets/sidebar.svg"
+        }
+      ]
+    },
+    "views": {
+      "bootstrapSidebar": [
+        {
+          "id": "myCustomView",
+          "name": "我的自定义视图",
+          "icon": "assets/sidebar.svg"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
