@@ -12,14 +12,14 @@ module.exports = {
   ],
   rules: {
     indent: ['error', 2],
-    '@typescript-eslint/naming-convention': 'warn',
+    '@typescript-eslint/naming-convention': 'off',
     '@typescript-eslint/semi': 'warn',
     curly: 'warn',
     eqeqeq: 'warn',
     'no-throw-literal': 'warn',
-    semi: 'error',
     'quote-props': [ 2, 'as-needed'],
-    quotes: [2, 'single', { avoidEscape: true, allowTemplateLiterals: true }]
+    quotes: [2, 'single', { avoidEscape: true, allowTemplateLiterals: true }],
+    semi: ['error', 'always']
   },
   ignorePatterns: [
     'out',
