@@ -33,7 +33,8 @@
     "views": {
       "bootstrapSidebar": [
         {
-          "id": "myCustomView",
+          "type": "webview",
+          "id": "myCustomWebview",
           "name": "我的自定义视图",
           "icon": "assets/sidebar.svg"
         }

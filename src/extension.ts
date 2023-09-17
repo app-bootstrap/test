@@ -2,11 +2,14 @@ import * as vscode from 'vscode';
 
 function getWebviewContent(): string {
   return `
+    <!DOCTYPE html>
     <html>
       <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
     <body>
-      <h1>欢迎来到我的自定义Webview视图！</h1>
+      <div>welcome</div>
     </body>
     </html>
   `;
@@ -16,16 +19,18 @@ export function activate(context: vscode.ExtensionContext) {
   console.log('vscode-extension-bootstrap is active.');
 
   const webViewPanel = vscode.window.createWebviewPanel(
-    'myCustomView', // 同`package.json`中定义的ID
-    '我的自定义Webview视图', // 面板标题
-    vscode.ViewColumn.One, // 显示在编辑器的哪一列
+    'myCustomWebview',
+    '自定义Webview',
+    vscode.ViewColumn.Beside,
     {
-      // Webview选项
-      enableScripts: true // 允许在Webview中运行脚本
+      enableScripts: true,
+      enableCommandUris: true,
+      enableFindWidget: true,
+      localResourceRoots: [],
     }
   );
 
-  webViewPanel.webview.html = getWebviewContent(); // 设置Webview的内容
+  webViewPanel.webview.html = getWebviewContent();
   context.subscriptions.push(webViewPanel);
 
   let disposable = vscode.commands.registerCommand('vscode-extension-bootstrap.helloWorld', () => {
@@ -33,8 +38,8 @@ export function activate(context: vscode.ExtensionContext) {
   });
 
   context.subscriptions.push(disposable);
-}
+};
 
 export function deactivate() {
   console.log('vscode-extension-bootstrap is deactivate.');
-}
+};
