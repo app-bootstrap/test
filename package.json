@@ -51,6 +51,9 @@
     "lint": "eslint . --ext ts,js --fix",
     "test": "node ./out/test/runTest.js"
   },
+  "dependencies": {
+    "openai": "^4.7.1"
+  },
   "devDependencies": {
     "@types/mocha": "^10.0.1",
     "@types/node": "16.x",
@@ -59,10 +62,10 @@
     "@typescript-eslint/parser": "^6.4.1",
     "@vscode/test-electron": "^2.3.4",
     "copy-webpack-plugin": "^11.0.0",
-    "eslint": "^8.47.0",
+    "eslint": "8",
     "glob": "^10.3.3",
     "husky": "4",
-    "mocha": "^10.2.0",
+    "mocha": "10",
     "ts-loader": "^9.4.4",
     "typescript": "^5.1.6",
     "webpack": "5",
@@ -72,5 +75,6 @@
     "hooks": {
       "pre-commit": "npm run lint"
     }
-  }
+  },
+  "repository": "git@github.com:app-bootstrap/vscode-extension-bootstrap.git"
 }

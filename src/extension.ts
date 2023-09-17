@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { getWebviewContent } from './assets-maganer';
-
+import { completions } from './proxy/openai';
 
 class MyDataProvider {
   getTreeItem(element: any) {
@@ -44,6 +44,12 @@ export function activate(context: vscode.ExtensionContext) {
   });
 
   context.subscriptions.push(disposable);
+
+  completions().then(d => {
+    console.log(d);
+  }).catch(e => {
+    console.log(e);
+  });
 };
 
 export function deactivate() {
